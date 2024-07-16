@@ -3,6 +3,9 @@ const { Sequelize } = require('sequelize');
 const sequelize = require('./config/database');
 const User = require('./models/User');
 const Project = require('./models/Project');
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const projectRoutes = require('./routes/projects');
 
 const app = express();
 const port = 3000;
@@ -13,7 +16,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// Add more routes and database interactions here
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/projects', projectRoutes);
+
 sequelize.sync()
   .then(() => {
     console.log('Database & tables created!');
