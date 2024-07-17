@@ -21,7 +21,7 @@ export class LoginComponent {
         this.router.navigate(['/projects']);
       },
       (error) => {
-        // console.error('Login failed:', error);
+         console.error('Login failed:', error);
       }
     );
   }
